@@ -130,61 +130,67 @@ The NGINX configuration was tested using `nginx -t` and reported successful conf
 
 The initial installation was verified as NGINX 1.15.5, establishing the outdated baseline.
 
-### 10. Nessus Vulnerability Findings — NGINX
+### 10. Nessus NGINX Vulnerability Findings
 
-![Nessus NGINX Findings](screenshots/nginx-report-image-10.png)
+![Nessus NGINX Vulnerability Findings](screenshots/nginx-report-image-10.png)
 
-Nessus vulnerability scan results showing security findings associated with the NGINX environment.
+Nessus identified six findings associated with NGINX, including multiple NGINX vulnerabilities, a 1-byte memory overwrite RCE finding, information disclosure, HTTP server detection, and NGINX installation detection.
 
-### 11. Nessus Vulnerability Findings — ImageMagick
+### 11. Nessus ImageMagick Vulnerability Findings
 
-![Nessus ImageMagick Findings](screenshots/nginx-report-image-11.png)
+![Nessus ImageMagick Vulnerability Findings](screenshots/nginx-report-image-11.png)
 
-Additional vulnerability findings identified by Nessus for ImageMagick and related components.
+Nessus identified four ImageMagick findings, including three multiple-vulnerability findings affecting ImageMagick versions and an ImageMagick installation detection result.
 
-### 12. Nessus Vulnerability Findings — SSL/TLS
+### 12. Nessus SSL Security Findings
 
-![Nessus SSL TLS Findings](screenshots/nginx-report-image-12.png)
+![Nessus SSL Security Findings](screenshots/nginx-report-image-12.png)
 
-Nessus findings related to SSL/TLS security configuration.
+Nessus identified four SSL-related findings: SSL Certificate Cannot Be Trusted, SSL Certificate Information, SSL Cipher Suites Supported, and SSL Perfect Forward Secrecy Cipher Suites Supported.
 
 ### 13. Installing Ansible
 
 ![Installing Ansible](screenshots/nginx-report-image-13.png)
 
-Ansible was installed to automate the NGINX patching process.
+Ansible was installed using the APT package manager with the `sudo apt install ansible -y` command.
 
 ### 14. Verifying Ansible Installation
 
 ![Ansible Version Verification](screenshots/nginx-report-image-14.png)
 
-The Ansible installation was verified and the installed version was displayed.
+The Ansible installation was verified using `ansible --version`, showing Ansible Core 2.20.3 and the associated Python and Jinja versions.
 
 ### 15. Creating the NGINX Update Playbook
 
 ![Creating update_nginx.yml](screenshots/nginx-report-image-15.png)
 
-The `update_nginx.yml` file was created to automate the NGINX update process.
+The `update_nginx.yml` playbook file was created and opened using the Nano text editor.
 
-### 16. Ansible NGINX Patching Playbook
+### 16. Configuring the NGINX Ansible Playbook
 
-![NGINX Ansible Patching Playbook](screenshots/nginx-report-image-16.png)
+![NGINX Ansible Playbook Configuration](screenshots/nginx-report-image-16.png)
 
-The playbook defines tasks for removing the manually installed NGINX, updating packages, installing NGINX, and managing the NGINX service.
+The `update_nginx.yml` playbook was configured with tasks to manage the NGINX installation, update system packages, install the latest NGINX package, and start and enable the NGINX service.
 
-### 17. Executing the Ansible Playbook
+### 17. Executing the NGINX Ansible Playbook
 
 ![Ansible Playbook Execution](screenshots/nginx-report-image-17.png)
 
-The Ansible playbook was executed with elevated privileges and the task results were displayed.
+The playbook was executed using `ansible-playbook update_nginx.yml --ask-become-pass`. The execution completed successfully with `failed=0` in the play recap.
 
 ### 18. Final NGINX Version Verification
 
-![Final NGINX Version](screenshots/nginx-report-image-18.png)
+![Final NGINX Version Verification](screenshots/nginx-report-image-18.png)
 
-The final verification shows that NGINX was successfully updated to version 1.30.1.
+The final version check confirmed that NGINX was updated successfully to version 1.30.1.
 
 ---
+
+### Project Report
+
+The complete technical assessment report is available in:
+
+`report/nginx-security-hardening-report.docx`
 
 ### Project Report
 
