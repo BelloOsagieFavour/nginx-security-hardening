@@ -71,82 +71,82 @@ ansible-playbook update_nginx.yml --ask-become-pass
 nginx -version
 ```
 
-## Evidence 
+
 ## Evidence
 
-The following evidence documents the deployment, assessment, and automated patching of the NGINX server.
+The following evidence documents the deployment, vulnerability assessment, and automated patching of the NGINX server.
 
-### 1. Kali Linux Environment Preparation
+### 1. Kali Archive Key Configuration
 
-![Kali Linux Environment Preparation](screenshots/nginx-report-image-1.png)
+![Kali Archive Key Configuration](screenshots/nginx-report-image-1.png)
 
-Initial environment preparation and trusted Kali package key configuration.
+The Kali archive key was downloaded and configured to support trusted package installation.
 
 ### 2. SSH Service Installation and Verification
 
-![SSH Service Installation and Verification](screenshots/nginx-report-image-2.png)
+![SSH Service Configuration](screenshots/nginx-report-image-2.png)
 
-SSH was configured and verified as an active service.
+The OpenSSH service was installed, started, enabled, and its status was verified.
 
-### 3. Downloading the Outdated NGINX Version
+### 3. Downloading NGINX 1.15.5
 
 ![Downloading NGINX 1.15.5](screenshots/nginx-report-image-3.png)
 
-The assessment downloaded the outdated NGINX 1.15.5 source package for security evaluation.
+The outdated NGINX 1.15.5 source archive was downloaded for the security assessment.
 
-### 4. Installing NGINX Build Dependencies
+### 4. Installing NGINX Dependencies
 
-![NGINX Build Dependencies](screenshots/nginx-report-image-4.png)
+![Installing NGINX Dependencies](screenshots/nginx-report-image-4.png)
 
-Required compilation and development dependencies were installed.
+Required build dependencies were installed before compiling NGINX from source.
 
-### 5. Extracting the NGINX Source Code
+### 5. Extracting the NGINX Source
 
-![Extracting NGINX Source Code](screenshots/nginx-report-image-5.png)
+![Extracting NGINX Source](screenshots/nginx-report-image-5.png)
 
-The NGINX 1.15.5 source archive was extracted for compilation.
+The NGINX 1.15.5 source archive was extracted.
 
-### 6. Compiling and Installing NGINX
+### 6. Configuring and Compiling NGINX
 
-![Compiling and Installing NGINX](screenshots/nginx-report-image-6.png)
+![Configuring and Compiling NGINX](screenshots/nginx-report-image-6.png)
 
-NGINX was configured, compiled, and installed from source.
+The NGINX source was configured and the installation process was initiated using `make install`.
 
 ### 7. Starting the NGINX Server
 
-![Starting NGINX Server](screenshots/nginx-report-image-7.png)
+![Starting NGINX](screenshots/nginx-report-image-7.png)
 
-The manually installed NGINX server was started successfully.
+The manually compiled NGINX server was started using the NGINX binary.
 
 ### 8. NGINX Configuration Validation
 
-![NGINX Configuration Validation](screenshots/nginx-report-image-8.png)
+![NGINX Configuration Test](screenshots/nginx-report-image-8.png)
 
-The NGINX configuration was tested and confirmed to have valid syntax.
+The NGINX configuration was tested using `nginx -t` and reported successful configuration syntax.
 
 ### 9. Initial NGINX Version Verification
 
 ![Initial NGINX Version](screenshots/nginx-report-image-9.png)
 
-The installed server was verified as NGINX 1.15.5, confirming the outdated version.
+The initial installation was verified as NGINX 1.15.5, establishing the outdated baseline.
 
-### 10. Nessus Vulnerability Assessment – NGINX
+### 10. Nessus Vulnerability Findings — NGINX
 
-![Nessus NGINX Vulnerability Assessment](screenshots/nginx-report-image-10.png)
+![Nessus NGINX Findings](screenshots/nginx-report-image-10.png)
 
-Nessus identified multiple vulnerabilities associated with the outdated NGINX installation.
+Nessus vulnerability scan results showing security findings associated with the NGINX environment.
 
-### 11. Nessus Vulnerability Assessment – ImageMagick
+### 11. Nessus Vulnerability Findings — ImageMagick
 
-![Nessus ImageMagick Vulnerability Assessment](screenshots/nginx-report-image-11.png)
+![Nessus ImageMagick Findings](screenshots/nginx-report-image-11.png)
 
-Additional vulnerabilities identified during the Nessus security assessment.
+Additional vulnerability findings identified by Nessus for ImageMagick and related components.
 
-### 12. Nessus Vulnerability Assessment – SSL
+### 12. Nessus Vulnerability Findings — SSL/TLS
 
-![Nessus SSL Vulnerability Assessment](screenshots/nginx-report-image-12.png)
+![Nessus SSL TLS Findings](screenshots/nginx-report-image-12.png)
 
-SSL-related vulnerabilities identified during the vulnerability assessment.
+Nessus findings related to SSL/TLS security configuration.
 
 ### 13. Installing Ansible
 
@@ -158,33 +158,39 @@ Ansible was installed to automate the NGINX patching process.
 
 ![Ansible Version Verification](screenshots/nginx-report-image-14.png)
 
-The installed Ansible version was verified successfully.
+The Ansible installation was verified and the installed version was displayed.
 
 ### 15. Creating the NGINX Update Playbook
 
-![Creating Ansible Playbook](screenshots/nginx-report-image-15.png)
+![Creating update_nginx.yml](screenshots/nginx-report-image-15.png)
 
-The `update_nginx.yml` playbook was created for automated NGINX management.
+The `update_nginx.yml` file was created to automate the NGINX update process.
 
 ### 16. Ansible NGINX Patching Playbook
 
 ![NGINX Ansible Patching Playbook](screenshots/nginx-report-image-16.png)
 
-The playbook defines tasks for removing the manually installed NGINX and installing the latest available package version.
+The playbook defines tasks for removing the manually installed NGINX, updating packages, installing NGINX, and managing the NGINX service.
 
-### 17. Executing the NGINX Patching Playbook
+### 17. Executing the Ansible Playbook
 
 ![Ansible Playbook Execution](screenshots/nginx-report-image-17.png)
 
-The Ansible playbook was executed with elevated privileges to automate the NGINX update process.
+The Ansible playbook was executed with elevated privileges and the task results were displayed.
 
 ### 18. Final NGINX Version Verification
 
-![Final NGINX Version Verification](screenshots/nginx-report-image-18.png)
+![Final NGINX Version](screenshots/nginx-report-image-18.png)
 
-The final verification confirms the updated NGINX installation.
+The final verification shows that NGINX was successfully updated to version 1.30.1.
 
 ---
+
+### Project Report
+
+The complete technical assessment report is available in:
+
+`report/nginx-security-hardening-report.docx`
 
 ### Project Report
 
